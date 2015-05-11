@@ -34,4 +34,5 @@ The following mechanics where added by myself on own initiative:
       >Music starts playing when player is inside room
   - A toggle button for the sound the ground emits
       >This is a easy solution so the player can listen to other sounds without always hearing what the ground has to say
-  -
+
+The extra's I've added took me around 3-4 hours
