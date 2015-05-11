@@ -19,20 +19,20 @@ As this project was incredibly easy for me I decided to add some extra's
 The following mechanics where added by myself on own initiative:
 
   - A keyboard Event Manager
-      -Register Events on Key Press
-      -Register Events on Key Release
-      -Register Events regardless of Key Release or Key Press
-      -Unregister Events
-      -Remove all events on a Key
+    -Register Events on Key Press
+    -Register Events on Key Release
+    -Register Events regardless of Key Release or Key Press
+    -Unregister Events
+     -Remove all events on a Key
   - A 3D Sound from Unity itself
-      -This isn't that special on it's own but shows I'm capable to use predefined tools to accomplish tasks in a easy and quick way
+    -This isn't that special on it's own but shows I'm capable to use predefined tools to accomplish tasks in a easy and quick way
   -Predefined Camera movement based on Targets
-      -Adds the ability to add gameobjects to the camera control and a key for each object. The camera moves to the object when the key is pressed and negates user input during transition
+     -Adds the ability to add gameobjects to the camera control and a key for each object. The camera moves to the object when the key is pressed and negates user input during transition
   - A disco room
-      -Door opens on player proximity
-      -Lights change color randomly when player is inside room
-      -Music starts playing when player is inside room
+    -Door opens on player proximity
+    -Lights change color randomly when player is inside room
+    -Music starts playing when player is inside room
   - A toggle button for the sound the ground emits
-      -This is a easy solution so the player can listen to other sounds without always hearing what the ground has to say
+    -This is a easy solution so the player can listen to other sounds without always hearing what the ground has to say
 
 The extra's I've added took me around 3-4 hours
