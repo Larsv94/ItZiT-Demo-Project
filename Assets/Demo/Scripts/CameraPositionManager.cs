@@ -1,16 +1,17 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
+
 
 public class CameraPositionManager : MonoBehaviour {
 
-	public GameObject BeginTarget;
-	public KeyCode BeginKey;
-	public GameObject ScriptSoundTarget;
-	public KeyCode ScriptKey;
-	public GameObject ThreeDeeSoundTarget;
-	public KeyCode ThreeDeeKey;
-	public GameObject RoomTarget;
-	public KeyCode RoomKey;
+	[System.Serializable]
+	public struct WayPoint{
+		public KeyCode Key;
+		public GameObject _Object;
+	}
+
+	public WayPoint[] waypoints;
 
 	SpectatorMovement movementComponent;
 	bool interp = false;
@@ -21,15 +22,20 @@ public class CameraPositionManager : MonoBehaviour {
 	void Start () {
 		movementComponent = GetComponent<SpectatorMovement> ();
 
-		//Register all key events
-		KeyBoardEventManager.instance.RegisterKeyDown (BeginKey,new KeyEvent(MoveToBegin));
-		KeyBoardEventManager.instance.RegisterKeyDown (ScriptKey,new KeyEvent(MoveToScript));
-		KeyBoardEventManager.instance.RegisterKeyDown (ThreeDeeKey,new KeyEvent(MoveTo3D));
-		KeyBoardEventManager.instance.RegisterKeyDown (RoomKey,new KeyEvent(MoveToRoom));
 	}
 	
 	// Update is called once per frame
 	void Update () {
+		if(Input.anyKeyDown&&!interp){
+			foreach(WayPoint point in waypoints){
+				if(Input.GetKeyDown(point.Key)&&point._Object){
+					newLocation = point._Object.transform.position;//Set new location if key pressed is linked to a object in the world
+					interp = true;
+					(GetComponent<SphereCollider> () as SphereCollider).isTrigger = true;
+					movementComponent.setIsEnabled(false);
+				}
+			}
+		}
 		if (interp) {
 			this.transform.position = Vector3.Lerp(this.transform.position, newLocation, 0.1f);
 			if(Vector3.Distance(this.transform.position, newLocation)<0.1){
@@ -41,33 +47,7 @@ public class CameraPositionManager : MonoBehaviour {
 		}
 	
 	}
-	#region KeyEvents
-	public void MoveToBegin(KeyCode key){
-		newLocation = BeginTarget.transform.position;
-		interp = true;
-		(GetComponent<SphereCollider> () as SphereCollider).isTrigger = true;
-		movementComponent.setIsEnabled(false);
-	}
 
-	public void MoveToScript(KeyCode key){
-		newLocation = ScriptSoundTarget.transform.position;
-		interp = true;
-		(GetComponent<SphereCollider> () as SphereCollider).isTrigger = true;
-		movementComponent.setIsEnabled(false);
-	}
-
-	public void MoveTo3D(KeyCode key){
-		newLocation = ThreeDeeSoundTarget.transform.position;
-		interp = true;
-		(GetComponent<SphereCollider> () as SphereCollider).isTrigger = true;
-		movementComponent.setIsEnabled (false);
-	}
-
-	public void MoveToRoom(KeyCode key){
-		newLocation = RoomTarget.transform.position;
-		interp = true;
-		(GetComponent<SphereCollider> () as SphereCollider).isTrigger = true;
-		movementComponent.setIsEnabled (false);
-	}
-	#endregion
 }
+
+
