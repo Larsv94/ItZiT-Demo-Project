@@ -26,7 +26,7 @@ The following mechanics where added by myself on own initiative:
      -Remove all events on a Key
   - A 3D Sound from Unity itself
     - This isn't that special on it's own but shows I'm capable to use predefined tools to accomplish tasks in a easy and quick way
-  -Predefined Camera movement based on Targets
+  - Predefined Camera movement based on Targets
      - Adds the ability to add gameobjects to the camera control and a key for each object. The camera moves to the object when the key is pressed and negates user input during transition
   - A disco room
     - Door opens on player proximity
